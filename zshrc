@@ -1,5 +1,5 @@
 # all the hooks for vc and prompt
-# add --apple-use-keychain on macos
+
 autoload -Uz compinit promptinit
 compinit
 promptinit
@@ -11,7 +11,7 @@ autoload -Uz add-zsh-hook vcs_info
 setopt prompt_subst
 
 add-zsh-hook precmd vcs_info
-PROMPT='%F{red}%n%f@%F{red}%m%f %F{blue}%B%~%b%f %F{red}${vcs_info_msg_0_}%f'$'\n''>>> '
+PROMPT='%F{red}%n%f@%F{red}%m%f %F{blue}%B%~%b%f %F{red}${vcs_info_msg_0_}%f'$'\n'' > '
 
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr ' *'
@@ -26,12 +26,17 @@ alias la='ls -Ga'
 alias grep='grep --color'
 alias vi='nvim'
 alias vim='nvim'
+alias v='nvim'
 
 export PATH=/usr/local/bin:$PATH
 export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
+export MODULAR_HOME="/Users/joe/.modular"
+export PATH="/Users/joe/.modular/pkg/packages.modular.com_max/bin:$PATH"
+export EDITOR=nvim
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1:$CPLUS_INCLUDE_PATH"
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+set -a
+source ~/.env
+set +a
